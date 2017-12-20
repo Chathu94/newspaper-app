@@ -1,28 +1,46 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 
-import A from './A';
-import Img from './Img';
 import NavBar from './NavBar';
+import RightContent from './RightContent';
+import HeaderActive from './HeaderActive';
 import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
-import messages from './messages';
+import HeaderTitle from './HeaderTitle';
+import Search from './Search';
+import Button from '../Button';
+import Carousel from './Carousel';
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <A href="https://twitter.com/mxstbr">
-          <Img src={Banner} alt="react-boilerplate - Logo" />
-        </A>
         <NavBar>
-          <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
+          {/* Links */}
+          <HeaderTitle to="/">
+            <i className="far fa-newspaper"></i>
+            &nbsp;&nbsp;Newspaper Bucket
+          </HeaderTitle>
+          <HeaderActive to="/">
+            Home
+          </HeaderActive>
+          <HeaderLink to="/features">
+            All Newspapers
           </HeaderLink>
           <HeaderLink to="/features">
-            <FormattedMessage {...messages.features} />
+            Newspaper Agents
           </HeaderLink>
+          <HeaderLink to="/features">
+            About Us
+          </HeaderLink>
+          <HeaderLink to="/features">
+            Contact Us
+          </HeaderLink>
+          {/* Search */}
+          <RightContent>
+            <Search />
+            <Button handleRoute="/logout">Logout</Button>
+          </RightContent>
         </NavBar>
+        <Carousel />
       </div>
     );
   }
